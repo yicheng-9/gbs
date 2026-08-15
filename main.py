@@ -12,7 +12,7 @@ from dataclasses import dataclass
 USE_CONSTANT_PO = True
 USE_GB_FORMULA = False   # 高斯波束经验公式估算
 USE_GBMA      = True    # GBMA 高斯波束模式分析法（真远场叠加 + 边缘绕射）
-USE_CUT_FILE  = True    # 从 single_cut.cut 导入仿真数据做对比
+USE_CUT_FILE  = False   # 从 single_cut.cut 导入仿真数据做对比（本轮只与 PO 对比）
 
 # ========== 辅助函数 ==========
 def compute_feed_total_power(feed):
@@ -131,7 +131,7 @@ class AntennaConfig:
     freq: float = 12e9
     F: float = 0.6
     D: float = 1.0
-    offset_x: float = 0.0
+    offset_x: float = 0.5      # 偏馈：投影圆心位于 (0.5, 0, 0)
     offset_y: float = 0.0
     edge_angle_deg: float = 45.0
     edge_taper_db: float = -12.0
@@ -240,8 +240,9 @@ def run_antenna_analysis(cfg: AntennaConfig):
         E_gbma, dBi_gbma = compute_far_field_gbma(
             feed, cfg, theta_scan,
             bounces=1,
-            include_diffraction=True,
-            n_beams=181
+            include_diffraction=False,
+            n_beams=181,
+            gabor_mode='angular'
         )
         dBi_results['GBMA 高斯波束模式'] = dBi_gbma
         print(f"GBMA 峰值方向性: {np.max(dBi_gbma):.2f} dBi")
