@@ -155,8 +155,8 @@ def compute_and_save_po_gbma(cfg: AntennaConfig):
 if __name__ == "__main__":
     config = AntennaConfig()
     # 可在此修改参数，例如：
-    config.freq = 30e9
+    config.freq = 12e9
     config.D = 1
-    config.offset_x = 0.5
+    # config.offset_x = 0.5
     # config.edge_taper_db = -15
     compute_and_save_po_gbma(config)
