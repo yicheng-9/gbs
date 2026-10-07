@@ -95,7 +95,7 @@ def plot_cut_files(file_list, labels=None, title="方向图对比", linestyles=N
         # 取第一个切面（若包含多个，通常第一个是 φ=0°）
         cut = cuts[0]
         plt.plot(cut['theta'], cut['gain_dbi'], label=label, linewidth=1.5, linestyle=linestyles[idx])
-        print(f"已加载 {fname} (φ={cut['phi']}°) 峰值 {np.max(cut['gain_dbi']):.2f} dBi")
+        print(f"已加载 {fname} (φ={cut['phi']}°) 峰值 {np.max(cut['gain_dbi']):.4f} dBi")
 
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     plt.rcParams['legend.fontsize'] = font_size - 2       # 图例
     # 示例：绘制 PO.txt、gbma.txt 以及可能的 GRASP 仿真数据 single_cut1.cut
     plot_cut_files(
-        file_list=[ 'gbma.cut','PO.cut' , '90.cut'],
+        file_list=[ 'gbma.cut','PO.cut' , '30g.cut'],
         # file_list=[ 'gbma.cut' , 'PO.cut'],
 
         # labels=[ 'GBMA', 'PO'],
@@ -134,8 +134,8 @@ if __name__ == "__main__":
 
         linestyles=['-', '--', ':'],   # 分别对应实线、虚线、点线
         title='抛物面天线方向图对比 (φ=0°)',
-        xlim=(-90, 90),
-        ylim=(-100, 50),
+        xlim=(-10, 10),
+        ylim=(-10, 50),
         save_path='pattern_comparison.png',
         show=True
     )

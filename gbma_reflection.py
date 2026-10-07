@@ -211,12 +211,15 @@ def far_field_sum(P: np.ndarray, n_hats: np.ndarray, cosi: np.ndarray,
       I(ŝ) = (πw²/cosθᵢ)/√(γ_t·γ_s) ·
              exp(−(k²w²/4)·((u_t−sinθᵢ)²/(cos²θᵢ·γ_t) + u_s²/γ_s))
 
-    边缘光斑截断 + 边界绕射波（1D 直边精确结果）：
-      T(Ŝ) = ½[1 + erf(√c_r·d_r − jk·ũ/(2√c_r))]
+    边缘光斑截断 + 边界绕射波（直边精确解 + 曲边首阶修正）：
+      T(Ŝ) = ½[1 + erf(√c_r·d_r − jk·ũ/(2√c_r))] − S(Ŝ)/I_full
       d_r 为光斑中心沿表面到边缘的带符号距离（向内为正），
       ũ = Ŝ·ê_r − sinθᵢ·cosφ_r 为观察方向相对 GO 反射方向在 ê_r 上
-      的投影。ũ=0 退化为纯截断因子；erf 尾部即 PO 积分自身的边缘
-      贡献 P_d（数值 PO 天然包含的边界绕射波，非 PTD 修正）。
+      的投影。erf 尾部即 PO 积分自身的边缘贡献 P_d（数值 PO 天然
+      包含的边界绕射波，非 PTD 修正）；S/I_full 为真实曲边（切平面
+      内抛物线 s_bound=d_r−κη²/2）与切线之间的月牙区积分闭式
+      （Chou-Pathak 1997 附录 A/B 的首阶形式），恢复边缘曲率的
+      首阶影响，直边模型是其 κ→0 极限。
 
     Args:
         S: 观察方向单位矢量 (N_theta, 3)
@@ -273,6 +276,31 @@ def far_field_sum(P: np.ndarray, n_hats: np.ndarray, cosi: np.ndarray,
     # inf/nan；此时高斯方向图因子 F_pat 已下溢为 0，乘积物理上为 0，
     # 把非有限的 T_r 置 0，避免 0×inf=NaN 污染整个方向图。
     T_r = np.where(np.isfinite(T_r), T_r, 0.0)
+
+    # ---- 曲边截断修正（Chou-Pathak 1997 附录 A/B 的首阶形式）----
+    # 真实边缘在切平面内是抛物线 s_bound(η) = d_r − κ·η²/2，
+    # κ = 1/(a·tilt)（投影圆在倾斜切平面内的曲率）；切线模型多算了
+    # 边界与真实圆之间的"月牙区"，其积分在薄月牙近似下闭式：
+    #   S/I_full = (κ/2√π)·√c_r·e^{−c_r d_r² + jkũ_r d_r + (kũ_r)²/(4c_r)}
+    #              ·[1/(2c_φ) − k²ũ_φ²/(4c_φ²)]
+    # c_φ 为光斑沿边缘方向 ê_φ 的复二次系数，ũ_φ 为观察方向相对 GO
+    # 反射方向沿 ê_φ 的投影。该修正恢复边缘曲率对边界波的首阶影响
+    # （沿边缘相位变化的驻相效应首阶），直边模型是它的 κ→0 极限。
+    e_phi = np.cross(n_hats, e_r)                       # 沿边缘方向（切平面内 ⊥ e_r）
+    cos_phi_phi = np.sum(e_phi * e_t, axis=1)
+    u_phi = S @ e_phi.T - (sin_i * cos_phi_phi)[None, :]
+    c_phi = (cos_phi_phi**2 * (cosi**2 / w_inc**2) * gam_t
+             + (1.0 - cos_phi_phi**2) * (1.0 / w_inc**2) * gam_s)
+    kappa = 1.0 / (a_rim * np.maximum(tilt, 1e-6))
+    mom2 = 1.0 / (2.0 * c_phi) - (k**2) * u_phi**2 / (4.0 * c_phi**2)
+    with np.errstate(all='ignore'):
+        E_slv = (-c_r[None, :] * d_r[None, :]**2
+                 + 1j * k * u_r * d_r[None, :]
+                 + (k * u_r)**2 / (4.0 * c_r[None, :]))
+        S_ratio = ((kappa[None, :] / (2.0 * sqrt(pi))) * sqrt_c_r[None, :]
+                   * np.exp(E_slv) * mom2)
+        T_r = T_r - S_ratio
+        T_r = np.where(np.isfinite(T_r), T_r, 0.0)
 
     # ---- 相干叠加 ----
     s_dot_J = S @ J_m.T
