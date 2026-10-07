@@ -54,6 +54,13 @@ def trace_beams(dirs: np.ndarray, focus: np.ndarray, F: float, D: float,
           hit_idx: 保留波束在原格点中的索引 (N_hit,)
           N_hit:   保留波束数
     """
+    try:
+        from gbma_fast import trace_beams_fast
+        return trace_beams_fast(dirs, focus, F, D, ox, oy, feed_axis,
+                                w0_basis, zR_basis, verbose=verbose)
+    except ImportError:
+        pass
+
     P_all, r_all = [], []
     P_list, r_list, n_list, cosi_list = [], [], [], []
     et_list, es_list, ct_list, cs_list, h_list, hit_idx = [], [], [], [], [], []

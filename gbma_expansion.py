@@ -45,6 +45,12 @@ def generate_hexagonal_beam_directions(cone_half_angle: float,
     Returns:
         方向数组 (N_beams, 3)，每行为单位方向矢量
     """
+    try:
+        from gbma_fast import hex_directions_fast
+        return hex_directions_fast(cone_half_angle, delta_theta)
+    except ImportError:
+        pass
+
     directions = []
 
     # 中心波束 (沿 z 轴)
@@ -86,6 +92,12 @@ def rotate_directions_to_axis(directions: np.ndarray, target_axis: np.ndarray) -
     Returns:
         旋转后的方向数组 (N, 3)
     """
+    try:
+        from gbma_fast import rotate_directions_fast
+        return rotate_directions_fast(directions, target_axis)
+    except ImportError:
+        pass
+
     z_axis = np.array([0.0, 0.0, 1.0])
     target = target_axis / np.linalg.norm(target_axis)
 
@@ -279,20 +291,25 @@ def surface_expansion(feed, P: np.ndarray, r_n: np.ndarray,
     gouy_all = np.arctan(r_all / zR_basis)
 
     k_hat = (P - focus) / r_n[:, None]           # (N_hit,3) 命中点馈源方向
-    Dm = P[:, None, :] - P_all[None, :, :]       # (N_hit, N_beams, 3)
-    proj = np.einsum('mnd,nd->mn', Dm, dirs)     # (P_m−P_n)·ŝ_n
-    rho2 = np.einsum('mnd,mnd->mn', Dm, Dm) - proj**2
-    z_mn = r_all[None, :] + proj
-    cosA = np.clip(k_hat @ dirs.T, -1.0, 1.0)
-
-    A = ((w0_basis / w_all)[None, :] * (r_n[:, None] / np.maximum(r_all[None, :], 1e-12))
-         * (1.0 + cosA) / 2.0
-         * np.exp(-rho2 / w_all[None, :]**2)
-         * np.exp(-1j * k * (rho2 / (2.0 * R_all[None, :]) + z_mn - r_n[:, None]))
-         * np.exp(1j * gouy_all[None, :]))
-    A[:, ~np.isfinite(r_all)] = 0.0
     y = feed.far_field_amplitude(arccos(np.clip(k_hat @ feed_axis, -1.0, 1.0)))
-    C, *_ = np.linalg.lstsq(A, y, rcond=1e-8)
+    try:
+        from gbma_fast import build_expansion_A, solve_lsq_fast
+        A = build_expansion_A(P, r_n, P_all, r_all, dirs, k_hat,
+                              w_all, R_all, gouy_all, w0_basis, k)
+        C = solve_lsq_fast(A, y)
+    except ImportError:
+        Dm = P[:, None, :] - P_all[None, :, :]       # (N_hit, N_beams, 3)
+        proj = np.einsum('mnd,nd->mn', Dm, dirs)     # (P_m−P_n)·ŝ_n
+        rho2 = np.einsum('mnd,mnd->mn', Dm, Dm) - proj**2
+        z_mn = r_all[None, :] + proj
+        cosA = np.clip(k_hat @ dirs.T, -1.0, 1.0)
+        A = ((w0_basis / w_all)[None, :] * (r_n[:, None] / np.maximum(r_all[None, :], 1e-12))
+             * (1.0 + cosA) / 2.0
+             * np.exp(-rho2 / w_all[None, :]**2)
+             * np.exp(-1j * k * (rho2 / (2.0 * R_all[None, :]) + z_mn - r_n[:, None]))
+             * np.exp(1j * gouy_all[None, :]))
+        A[:, ~np.isfinite(r_all)] = 0.0
+        C, *_ = np.linalg.lstsq(A, y, rcond=1e-8)
 
     rel = np.linalg.norm(A @ C - y) / max(np.linalg.norm(y), 1e-30)
     if verbose:
