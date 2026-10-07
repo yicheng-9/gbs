@@ -76,7 +76,7 @@ class AntennaConfig:
     freq: float = 12e9
     F: float = 0.6
     D: float = 1.0
-    offset_x: float = 0.0     # 偏馈：投影圆心位于 (0.5, 0, 0)
+    offset_x: float = 0.0     # 正馈：投影圆心位于 (0.0, 0, 0)
     offset_y: float = 0.0
     edge_angle_deg: float = 45.0
     edge_taper_db: float = -12.0
@@ -133,8 +133,6 @@ def compute_and_save_po_gbma(cfg: AntennaConfig):
     U_c  = np.sum(np.abs(E_c)**2, axis=-1)
     D_c  = 4 * np.pi * U_c / P_feed_total
     dBi_po = 10 * np.log10(D_c + 1e-15)
-    print(f"{time.time()-t0:.2f}s")
-
     print(f"PO 峰值方向性: {np.max(dBi_po):.2f} dBi, 耗时 {time.time()-t0:.2f}s")
 
     # ---------- GBMA ----------
@@ -144,10 +142,9 @@ def compute_and_save_po_gbma(cfg: AntennaConfig):
         feed, cfg, theta_scan,
         bounces=1,
         include_diffraction=False,
-        n_beams=180,
-        gabor_mode='angular'
+        # n_beams=50,
+        # mode='farfield'
     )
-    print(f"{time.time()-t0:.2f}s")
     print(f"GBMA 峰值方向性: {np.max(dBi_gbma):.2f} dBi, 耗时 {time.time()-t0:.2f}s")
 
     # 保存为 .cut 文件
@@ -158,8 +155,8 @@ def compute_and_save_po_gbma(cfg: AntennaConfig):
 if __name__ == "__main__":
     config = AntennaConfig()
     # 可在此修改参数，例如：
-    # config.freq = 14e9
-    # config.D = 1.5
-    # config.offset_x = 0.5
+    config.freq = 30e9
+    config.D = 1
+    config.offset_x = 0.5
     # config.edge_taper_db = -15
     compute_and_save_po_gbma(config)

@@ -1,0 +1,650 @@
+===== PAGE 1 =====
+Novel modular approach based on Gaussian beam 
+diffraction for analysing quasi-optical multi-reflector 
+antennas 
+C. Rieckmann, M.R. Rayner, C.G. Parini, D.H. Martin and R.S. Donnan 
+Abstract: A novel approach for analysing quasi-optical multi-reflector systems is presented. In the 
+proposed method of analysis the input beam (from the feed or output from a previous reflector) is 
+expanded into a set of elementary Gaussian beams. These are propagated to the reflector. 
+Reflection is treated in a geometrical optics manner. Diffraction is treated by applying the 
+canonical problem of a 3-D Gaussian beam incident upon an opaque Kirchhoff half-screen. Its 
+asymptotic solution yields a so-called boundary-diffraction wave that complements the geometrical 
+wave that corresponds to the reflected beam. The output beam is a superposition of all reflected 
+and diffracted elementary beams and can again be expanded into a set of Gaussian beams, making 
+the method modular and suitable for large multi-element quasi-optical systems. 
+1 Introduction 
+In many antenna applications, e.g. radiometers and radio- 
+astronomy applications [ 1, 21 several quasi-optical reflectors 
+are cascaded to form a feed system for an electrically large 
+main reflector. Such quasi-optical antenna systems are used 
+at increasingly high frequencies up to the terahurtz 
+region. Methods for the design verification of quasi-optical 
+(QO) systems are at present very limited. Geometrical optics 
+(GO) does not account for the effects of edge diffraction. 
+The geometrical theory of diffraction (GTD) is an extension 
+to GO which includes diffraction effects but fails at caustics; 
+this can be overcome by use of the uniform theory of 
+diffraction (UTD). However, the method cannot easily be 
+applied to multi-reflector systems because of its 
+non-modularity due to multiple diffraction and caustics. 
+In the context of ths work modularity requires that the 
+fields at the interface between two modules need to be fully 
+specified. A module is defined as being an input field defined 
+on an input surface (either from a feed or the output field 
+from a previous module), a reflector and the subsequent 
+output field defined on an output surface. Simply specifying 
+the transverse fields on the output surface (preferably 
+normal to the main collimated field) does not give 
+the direction of any scattered ray that forms part of this 
+field. The subsequent input field to the next module is 
+thus incorrectly defined. The only way to fully specify the 
+fields on the output surface, and hence replace the ‘sources’ 
+inside that surface, is to invoke the field equivalence 
+principle and specify currents on the surface. Integration of 
+these currents is then required to find the field (or currents) 
+on the next reflector. This is equivalent conceptually to 
+physical optics (PO). It is for this reason that commercial 
+multi-reflector antenna analysis software do not use UTD 
+0 IEE, 2002 
+IEE Pruceedings online no. 20020390 
+Dol: 10.1049/ip-map:20020390 
+Paper first received 12th July 2001 and in revised form 25th February 2002 
+The authors are with the Department of Electronic Engineering, Queen Mary, 
+University of L.ondon, Mile End Road, London El 4NS, UK 
+for systems with more than two reflectors and then in a 
+non-modular way. 
+Physical optics (PO) coupled with the physical theory of 
+diffraction (PTD) is an accurate and modular method for 
+analysing reflector antennas but is very expensive in terms 
+of computation time and storage for electrically large multi- 
+reflector systems. For the case of the near-field paraxial 
+region of interest here we have found negligible difference 
+between using PO and PO+PTD (undertaken using the 
+GRASP8 software). Gaussian-beam optics has been 
+successfully applied to the design of complete QO systems 
+but it is unsuitable for full electromagnetic verification as it 
+does not account for beam distortion and assumes 
+negligible field at all reflector edges. Because of this most 
+QO use excessively oversized reflectors to ensure a successful 
+design. However, there is a growing need, especially in 
+space-based systems, to make QO-fed systems as compact 
+as possible. 
+Chou et al. [3, 41 have already responded to this by 
+developing a PO-based Gaussian beam analysis suited to 
+the rapid computation of the total (reflected plus diffracted) 
+scattered field from an electrically large reflector. As in ths 
+work, it advances previous Gaussian beam methods of 
+analysis by accounting for the presence of the rim of a 
+reflector. Like Chou et al., the solution here to the problem 
+of rapid analysis of large reflectors is based upon 
+reformulation of the illuminating source field in terms of 
+a series expansion of Gaussian basis functions. However, 
+the construction and application (and therefore physical 
+interpretation of the operation) of the Gaussian beam 
+expansion of the source field is entirely different. 
+We emphasise the key feature of modularity, to be 
+elaborated upon below, as the significant development to 
+the work of Chou et al. That is, the application of diffracted 
+Gaussian beam analysis reported here, may be successively 
+applied from reflector to reflector in a multi-antenna 
+system. Ths prepares for future analysis of multi-antenna 
+QO systems that may additionally incorporate intermediate 
+signal processing components such as dichroics and wire 
+grids. 
+A technical advantage is also present here in the 
+mechanics of the analysis of the source field into Gaussian 
+IEE Pvooc-Microw. Antennus Propug., 149. No. 3, June 2002 160 
+===== PAGE 2 =====
+beams. Chou et al. [4] acknowledge the advantage of a 
+Gabor-type expansion (as an alternative to the method they 
+used), to provide a priori a complete analysis of the source 
+field and to remove any arbitrariness in the choice of initial 
+beam parameters, as they have, once the expansion lattice 
+over the plane of the source has been constructed. We avoid 
+their concern of a Gabor-type analysis restricting control on 
+the choice of initial beam parameters by using a windowed 
+Fourier transform. This achieves a regular mesh in phase 
+space, as they desire for their method. A wavelet basis 
+would, however, generate the irregular phase space mesh 
+that they seek to avoid, for convenience of engineering 
+application. 
+Further comment on the additional matters related to the 
+effects of double curvature in a reflector, upon reflection 
+and diffraction processes, are respectively held over until 
+Sections 2.2 and 2.3. 
+The diffracted Gaussian beam approach (DGBA) tries to 
+combine the numerical efficiency of a description in terms of 
+beams, similar to the ray description used in GO, with the 
+modularity and reliability of physical optics. In fact the 
+DGBA may be regarded as a UTD-like operation, but now 
+with PO-based Gaussian beams rather than with the 
+conventional rays of GO, thereby being continuously 
+operative over the entire face of the reflector from regions 
+of focused (or nearly focused) fields across to the edge. 
+A single step in the DGBA multi-reflector analysis is 
+illustrated in Fig. 1. The incident field on an input plane, 
+which could be either the near field of a feed or the radiated 
+field from a previous QO reflector, is expanded in terms of 
+fundamental 3-D Gaussian beam modes, each beam having 
+a beamwidth of several wavelengths. The elementary beams 
+are propagated to the reflector to be analysed. The change 
+of the complex beam parameters by the reflector's curvature 
+is calculated according to the laws of geometrical optics. 
+The reflected beams are then propagated to the output 
+plane. Those beams that hit the reflector at less than two 
+beamwidths distance from the rim, suffer significant 
+diffraction. Diffraction is treated by considering the edge 
+at the nearest rim point to be straight. The asymptotic 
+solution of the canonical problem of a Gaussian beam 
+incident upon an opaque Kirchhoff half-screen [5] provides 
+a diffracted field in terms of complementary error functions 
+which complements the GO reflected beam. This is 
+analogous to the GTD approach where a locally plane 
+f I 
+5 diffracted 
+I 
+I I 
+I output 
+; plane 
+\ 
+,'input / previous 
+,' plane reflector 
+Fig. 1 
+analysis 
+Illustration of u single ,step of the DGBA in a multi-reJector 
+wave is incident. The combined reflected and diffracted field 
+terms give a regular and continuous field withn the paraxial 
+region of the reflected beam. Finally, all reflected and 
+diffracted beams are superposed on an output plane. The 
+total field on the output plane is again cast into a Gaussian 
+beam expansion, making the method highly modular. 
+2 Theory 
+Here, the individual steps of a single reflector analysis with 
+the diffracted Gaussian beam approach will be described in 
+detail. These are: the expansion in terms of Gaussian beams, 
+the reflection of Gaussian beams at curved surfaces, and the 
+diffraction of Gaussian beams. 
+2. I Gaussian beam expansion 
+In [6] a very detailed description of the properties of the so- 
+called windowed Fourier transform that was originally 
+developed for signal analysis is given. This consists in 
+multiplying the spatially shifted signal with a usually 
+compactly supported window function and computing the 
+Fourier coefficients of the product. The windowed Fourier 
+transform as presented in [6] offers a higher degree of 
+freedom than the well-known Gabor expansion [7]. Unlike 
+Gabor's series representation, the spatial sampling rate can 
+be chosen higher than according to the Nyquist criterion, 
+and this oversampling leads to an advantage in terms of 
+stability and convergence [SI. In [6] an algorithm to calculate 
+the so-called 'dual frame function' for a 1-D Gaussian 
+shaped window function is derived. The Gaussian beam 
+expansion coefficients are then readily obtained by solving a 
+convolution integral between the 1 -D complex-valued signal 
+and the real-valued dual-frame function. In our application, 
+we have the two transverse components E,, El,, of the 
+electric field given on a plane z = 0 and want to expand the 
+field in terms of circular beams. Generalising the expansion 
+in [6] to a 2-D signal results in an expansion of the form 
+with a Gaussian shaped window function 
+where f' stands for either of the two transverse field 
+components, L is the radius of the circular Gaussian beam 
+and A,,,npl, is the expansion coefficient. The product sZOLO, 
+where Lo represents the spatial shift and Q, represents the 
+spectral shft, has to be chosen smaller than 27c (Gabor's 
+representation) to ensure stability [8]. The smaller it is 
+compared to 2n, the smoother the shape of the dual frame 
+function, it then resembling more and more the Gaussian 
+shape of the window function. Since the window function 
+can be separated into the two transverse co-ordinates, so the 
+2-D dual frame function iiiz-~(x, y) can also be written as 
+the product of two 1-D dual frame functions. The 
+expansion coefficients are then calculated as 
+where iii is the dual frame function. Since ii, can be 
+computed by evaluating a series expansion, determination 
+of the expansion coefficients is best implemented by using 
+the numerical efficiency of the two-dimensional FFT. Let 
+the expansion be characterised by N contributing spectral 
+IEE Proc.-Microw Anlenncis Propug.. I49, No. 3. June 2002 
+===== PAGE 3 =====
+terms and M contributing spatial terms per dimension such 
+that InI,IvI rN/2 and Iml,lpl <M/2. Let A=27c/Qo be the 
+spatial period corresponding to the spectral frequency Qo. A 
+numerical evaluation (FFT) of the Fourier integral (see (3)) 
+is based on the following identity: 
+.7 N-I N-1 
+where 
+ik 
++ n/N)A - mlo)w((k + v/N)A - pLo) (4b) 
+From the samples AmlIlly returned by the FFT algorithm the 
+true - expansion coefficients 
+Amnp,, are simply recovered by a simple re-indexing: 
+AmnP,, 0 I n L N/2; 0 L v 5 N/2 
+Am~+n,rll -N/2 I n<O; 0 5 v 5 N/2 
+Amnp = { Amnfiv+N 0 5 n 5 N/2; -N/2 5 v<O 
+-N/2 5 v < 0 Amn+~lcv+~ -N/2 I n < 0; 
+(5) 
+Based on the algorithm above, a block diagram realisation 
+of the two-dimensional FFT processor of the expansion 
+coefficients is depicted in Fig. 2. The quantity Q corre- 
+sponds to the number of summands (ik) in (46) which 
+depends' largely on the smoothness of the dual frame 
+function as dictated by the product Q&,, the smoother the 
+function, the smaller i and k. 
+lmlGMI2: 
+shift dual frame function 5 
+by mN/2 points (QN points) 
+I 
+((MN)' points) 1 I 
+(QNpoints) 
+IpIG MI2: 
+Fig. 2 
+processor 
+2-0 FFT implementation of the Gaussian beam expansion 
+To describe the scalar field components E,, E" of each 
+contributing term in the expansion everywhere in the half 
+space z20, asymptotic techniques are employed. For the 
+Gaussian shape of the window function, they yield simple 
+and, under most circumstances, accurate results, which are 
+readily interpretable in terms of complex beams and are 
+paraxially equivalent to a complex source point response. 
+Let BInnJx, y, z) denote the beam mode corresponding to 
+the expansion coefficient AnlnPy in (1) such that 
+f(x, Y,Z) = [A~~~~~ exp(j(mn + ~v)~o~O)~~mnpi~ 
+(x,.Y,z); z L 0 (6) 
+m ,n ,it, v 
+Asymptotically we obtain 
+The transformed coordinates pt and zt are linked with the 
+Cartesian co-ordinates x, y, z and the spectral components 
+162 
+of the wavevector via the transformation 
+zj =[nQo(x - mL0) + vQo(y - pLo) 
++Jk,z - (nQo)* - (vQ~)~z]/ko; ko = 27112 
+p: = (x - mLo)2 + (y - p~o)~ + z2 - z: 
+(sa) 
+(~b:) 
+zl can be viewed as the projection of the vector pointing 
+from the source point (mh, pLo, 0)' to the observation 
+point (x, y, z)' onto the direction 
+of the wavevector. The complex beam parameter qnv(zI) 
+absorbs all the information about the local spot size o(zt) 
+and the local radius of curvature R(zJ of the beam at each 
+axial position zt: 
+It is noted that the asymptotic expression (7) in terms of a 
+complex beam is accurate only withm the range of the 
+paraxial approximation. Fig. 3 illustrates this interpretation 
+of the expansion in terms of Gaussian beam modes, as a 
+number of spectral Gaussian beam modes located at each 
+spatial 'sampling point' separated by &. 
+Fig. 3 Interpretation of' the expansion in terms of Gaussian beam 
+modes 
+2.2 Gaussian beam reflection 
+Geometrical optics is applied to determine how the complex 
+beam parameter q changes when a Gaussian beam impinges 
+upon a curved reflector surface. At the reflection point, the 
+spot size of the beam stays the same whde the curvature, 
+which can generally be described by a set of two principal 
+radii of curvature R,, R2 changes according to the local 
+curvature of the reflecting surface. 
+We consider a point 70 on a surface, which could be 
+either a reflector surface or a wavefront, and locate a right- 
+IEE Proc-Microw Antennas Propag., 149, No. 3, June 2002 
+===== PAGE 4 =====
+handed co-ordinate system (51, 52, A) at the point, with 2 
+being the surface normal. 51 and t2 denote the two principal 
+directions of curvature of the surface, and it is clear that one 
+can describe the surface locally around the point 70 by the 
+biparabolic expansion 
+where RI and R2 are the two principal radii of curvature. 
+The two principle directions 51 and 52 are uniquely 
+described by one angle $. which denotes the rotation of 
+tl in the plane normal to h with respect to a reference vector 
+(3 x fi)/ljj x 21 in a mathematically positive sense. Hence 
+for all local points of a wavefront or of a reflector surface 
+the local curvature can be characterised by a set of 
+curvature parameters (fi, RI, R2, $). 
+Let us consider the case of an incident differential 
+ray strip with local curvature parameters (?,R; ,R;, Y') 
+that impinges upon a reflector with local curvature 
+parameters (2, R; , R;, Y') at an incident angle 0 relative 
+to the surface normal (Fig. 4). We want to detemline 
+the curvature parameters (if ,R;, R;, Yr) of the reflected 
+ray strip. The direction of the reflected ray, using Snell's 
+law, is 
+i' = i' + 2 cos(8)k (11) 
+Fig. 4 Rejection ofa Gaussian beam at a curvedsirrface: geometry 
+It is convenient to do all calculations in the ray-based co- 
+ordinate system (t'ic>r, t,.,.,) as illustrated in Fig. 4. (uf,cir, 
+u',~") from (IO) are simply related to (t','.,., by the 
+transformations 
+The rotation angles follow from simple geometrical 
+calculations since Y'," and the unit vectors of the ray-based 
+co-ordinate system are known. Matching the phase between 
+the incident and the reflected wavefront on the reflector 
+surface [9] and dropping all third and higher order terms 
+results in an equation system for the curvature parameters 
+sin (2a,) A 
+Yr is easily calculated from a,,, by computing the principal 
+directions of the reflected ray strip in terms of the ray-based 
+co-ordinate system and taking the scalar product with the 
+reference vector. The reflected beam is approximated by a 
+circular beam with a complex beam parameter 
+-I 
+q= (m+J$) 1 
+and the diffraction theory for circular Gaussian beams, as 
+presented in the next subsection, is applied. 
+Applying the conventions of this subsection, the 
+numerical results in Section 3 for the example of an offset 
+Cassegrain configuration have met criteria that establish a 
+compromise between the local spot size of an elementary 
+beam being small with respect to the radii of curvature of 
+the reflector, and being large enough to maintain a paraxial 
+beam condition as it propagates to the reflector. Specifically, 
+a support width (or window) for the Gaussian kernel is 
+chosen in proportion to the reflector diameter (D), and 
+displacement of the reflector from the source aperture, such 
+that a beam spot size of 6.42 (at 30GHz) results when the 
+field is sam led at the Nyquist rate 42. The far field 
+distance 20 12, where beam spreading begins, is 0.82 m. 
+This determines, for example, the location of the input 
+expansion plane that illuminates the first reflector. 
+2.3 Gaussian beam diffraction 
+In [5], diffraction of a Gaussian beam with a circular spot 
+size normally incident upon an opaque Kirchhoff half- 
+screen was investigated based on the boundary-diffraction 
+wave (BDW) theory. There, the evaluation of the 
+boundary-diffraction wave by the steepest descent method 
+yielded the uniform asymptotic representation of the total 
+diffracted field consisting of the geometrical optics compo- 
+nent (geometrical wave) and diffraction components in 
+terms of complementary error functions (boundary-diffrac- 
+tion wave). An attempt was made to extend the analysis of 
+[5] to elliptical Gaussian beams. Unfortunately, an asymp- 
+totic representation of the Kirchoff integral is prohibited, 
+the poles being anti-symmetric with respect to the stationary 
+point. We note, however, that proper account of the effect 
+of reflector bi-curvature upon the BDW may be made by 
+otherwise expressing the amplitude and phase components 
+of the field quantity of the Kirchoff integral in terms of a 
+curvature (or phase) matrix that has complex rather than 
+real-valued elements [3]. In this respect too, (13) may be 
+modified to describe general reflection from a bicurvature 
+reflector by being derived from a curvature matrix having 
+P 
+IEE Proc.-Microw. Antennus Propay.. 149, No. 3. June 2002 163 
+===== PAGE 5 =====
+half-screen 
+Gaussian beam z'j-zO 
+amplitude (ell - - 
+*- -------., 
+Fig. 5 
+stuttering reglion) 
+Geoinetr-v ofthe cunonicul problem solved in (51 (forrvurd- 
+complex rather than real-valued elements. Fig. 5 depicts the 
+geometry of the problem. The incident beam is assumed to 
+propagate in the z-direction. P(x, y, z) is the observation 
+point and Q(xo, yo, zo) is a source point of boundary- 
+diffraction located on the boundary r of the half screen. 
+2.3.1 Field representation in the backward-scat- 
+tering region: The solution of this canonical problem is 
+not repeated since it can be found in [5]. Instead, we show 
+how the solution can be adopted in the context of a single 
+reflector analysis. The formulation presented in [5] cannot 
+be used directly since we are interested only in the diffracted 
+field in the backward-scattering region (z<O). We try to 
+find an equivalent geometry to describe the diffracted field 
+in the backward-scattering region. Firstly, in addition to the 
+incident wave we have a reflected wave in the backward- 
+scattering region. Ths can be characterised by an image 
+beam at the opposite side of the half-screen, the same in 
+magnitude but opposite in sign to the incident beam. 
+Secondly, the reflected beam is propagating in the (-z)- 
+direction and diffraction has to be described in a new co- 
+ordinate system with the transformed x-, y- and z-axes 
+pointing in the (-x)-, y- and (-z)-directions, respectively. 
+Thirdly, in the equivalent geometry the equivalent half- 
+screen must be complementary to the true half-screen to 
+generate a shadow region in the lower half-space (~(0). 
+The boundary diffraction wave, however, does depend only 
+on the location of the edge and not on the orientation of the 
+half-screen. Fig. 6 shows the equivalent geometry for 
+calculating the diffracted field for the geometry shown in 
+Fig. 5 in the backward-scattering region. 
+To check the accuracy of the asymptotic method, the 
+problem of a normally incident Gaussian beam upon a 
+z =-z 
+Gaussian beam 
+half-screen 
+Fig. 6 
+the buck,~~urd-scuttering region 
+Equivalent geometry for determining the difructedjeld in 
+Kirchhoff half-screen has been analysed with the commer- 
+cial reflector analysis tool GRASPS [lo], using physical 
+optics. Fig. 7 shows the field in the backward-scattering 
+region for different beamwidths in comparison with 
+GRASP. The fields are calculated for a near field cut with 
+the co-ordinates 0, = 0; z = -3002). The parameter a in 
+Fig. 5 is chosen to be zero. It is seen from the results that the. 
+boundary diffraction theory is very accurate near the beam 
+axis. Outside the paraxial region, the results start to deviate 
+from the physical optics results but even there the deviation 
+is not more than a decibel or two. 
+Fig. 8 shows a comparison with GRASP physical optic:$ 
+for various values of the parameter a (see Fig. 5). The field 
+has been calculated at the same near field cut as in Fig. 7 
+and the half-beamwidth wo has been chosen to be eight 
+wavelengths. Again, the agreement within the paraxial 
+region is excellent and outside the paraxial region the 
+agreement is still reasonably good, keeping in mind that the 
+field levels are low. 
+2.3.2 Generalisation to oblique incidence: As- 
+sume that the direction of propagation of the incident 
+beam is still perpendicular to the edge of the half-screen. 
+However, the orientation of the half-screen may now be 
+non-perpendicular to the direction of propagation. Fig. 9 
+depicts the geometry of the discussed problem, showing all 
+involved co-ordinate systems. We have three different co- 
+ordinate systems: the transmitted beam-related co-ordinate 
+system (xt, y,, z,), the reflected beam related co-ordinate 
+system (x,, y,, zr) and the half-screen based co-ordinate 
+system (x,y, z). The origins of the transmitted and reflected 
+beam related co-ordinate systems are such that the location 
+of the edge corresponds to a zero axial position in both co- 
+ordinate systems. The origin of the half-screen based co- 
+ordinate system is the intersection point between the 
+incident and reflected beam axes and the plane of the 
+half-screen. Since normal incidence is assumed with respect 
+to the polar angle, the y-direction is the same for all three 
+co-ordinate systems. Let q be the incidence angle, being 
+defined as the angle between the negative of the direction of 
+propagation (-2,) and the surface tangential unit vector 
+normal to the edge of the half-screen (2). The observation 
+point is described in the half-screen based cylindrical @, q, 
+y)-coordinate system. The transmitted and reflected beams 
+propagate in the (n + qo)- and (n-qo)-direction, respec- 
+tively. Their co-ordinate systems are expressed in terms of 
+the half-screen co-ordinate system by simple translation and 
+rotation around the y-axis: 
++ 1 
+( 15b) 
+Since the boundary 'diffraction wave is obtained as a line 
+integral along the edge and does not depend on the 
+orientation of the half-screen, we are now in a position to 
+apply the equations governing the original geometry in 
+Fig. 5 in terms of the reflected beam related co-ordinate 
+system (x,.,yr,zr). The offset distance a from the edge (see 
+Fig. 5) is related to the axial position z, of the edge in the 
+half-screen based co-ordinate system (Fig. 9) by 
+a = z, sin(cpo). 
+Fig. 10 shows a comparison of the theory with GRASP 
+physical optics for various orientations of the half-screen as 
+164 IEE Proc-Microw. Antennas Propug., 149, No. 3, June 2002 
+===== PAGE 6 =====
+- PO; wo = 4 E. 
+0- 
+W 
+W 
+$ -20 - 
+- 
+- 
+9 
+-30 - 
+Fig. 7 Comparison of the backscat teredjield with physical optics for various beam spot sizes 
+0=0, ~=-300/1 
+-200 -1 50 -1 00 -50 0 50 100 150 200 
+x, 1 
+Fig. 8 Compurison of the backscatteredjeld with physical optic.7 for variom values of the parameter u (for geometry in Fig. 5) 
+HV, = SL, z = - 300 I, 
+being characterised by the angle qo. With respect to the 
+polar angle, normal incidence is assumed (0 = 90'). The field 
+has been calculated at the same near field cut as in Fig. 7 
+and the half-beamwidth wo has been chosen to be eight 
+wavelengths. The parameter a equals zero. From the results 
+it is seen that the agreement within the paraxial approxima- 
+tion is still very good, although there are some slight 
+deviations even near the reflected beam centre for non- 
+normal incidence. They grow progressively for more oblique 
+angles. 
+It would be desirable to derive a solution for non-normal 
+incidence with respect to the polar angle (the angle 0 in the 
+yz plane of Fig. 9). In the classical GTD canonical problem 
+of a plane wave incident on a half-screen the field 
+components along the edge can be separated from the 
+transverse components allowing the solution for normal 
+Fig. 9 Equivulent geometry for determining the clijjiructedjield in incidence to be used to construct a general solution. 
+the backward-scattering region ut oblique incidence Unfortunately, in our general problem the incident 
+incident beam 
+IEE Proc-Microw Antennas Propnq., 149, No. 3, June 2002 I65 
+===== PAGE 7 =====
+paraboloid, - 
+Fig. 10 
+for various orientations of the half-screen 
+Comparison of the backscattered field with physical optics 
+IVO = 82, u = 0. if = -3001. 
+Gaussian beam cannot be separated into three Cartesian co- 
+ordinates. It can, however, be shown that for non-normal 
+incidence with respect to the polar angle within a first-order 
+approximation the same stationary point and the same 
+shadow boundary and the same poles are obtained as for 
+noma1 incidence. Our conclusion is that for incidence 
+angles close to 90" the results for the equivalent geometry in 
+Fig.9 can still be applied. For 8 incidence, the beam 
+direction of the transmitted and reflected beams change 
+according to geometrical optics and the transmitted and 
+reflected beam related co-ordinate systems are now rotated 
+by (7c/2-0) around the x-axis compared to the case with 
+normal incidence. Geometrically, the geometrical optics 
+beams are rotated together with their associated diffraction 
+components. Of course, this treatment involves an approx- 
+imation error, whch is very small for almost normal 
+incidence and gets larger for more oblique incidence angles. 
+It is noted, that in quasi-optical systems the distance 
+between the reflectors is usually much larger than their 
+diameter such that the beams are well within the validity of 
+the paraxial approximation and hence the condition of near 
+normal incidence is well fulfilled. 
+3 Numerical Results 
+To validate the proposed method and to show its 
+modularity the offset Cassegrain configuration shown in 
+Fig. 1 1 was analysed at 30 GHz. Field plots on various near 
+field planes are shown and the results are compared to those 
+of a physical optics analysis with the commercial reflector 
+analysis package GRASP. At 30 GHz the subreflector and 
+main reflector have diameters of approximately 402 and 
+1002, respectively. 
+The far field pattern of the feed was assumed to be 
+Gaussian illuminating the subreflector edge at a level of 
+-6dB. The structure was analysed in two steps. The input 
+field plane for the analysis of the subreflector was chosen 
+0.8m away from the feed. The elementary beams in the 
+Gaussian beam expansion were eight wavelengths wide. 
+3.5m lm 3m 
+Geometry of a Cassegruin antenna test case Fig. 11 
+-50 '"'~""~""~""~'"'~""~~"'~""' 
+-200 -150 -100 -50 0 50 100 150 200 
+x,, 1 
+-10 
+-20 
+m 
+7J 
+2 -30 
+9 
+- 
+- 
+._ c 
+40 
+-50 
+-1 .o -0.5 0 0.5 1 .o 
+radius, m 
+Fig. 12 
+30 GHz with the results of physical optics 
+Comparison of the near field from the subreflector ut 
+The output plane was chosen to be 2m away from the 
+subreflector in a plane perpendicular to the line AB. Fig. 12 
+shows the output field in the offset plane in comparison to 
+PO calculations obtained with the commercial reflector 
+analysis code GRASP. The agreement is excellent. In the 
+second step the output field of the subreflector was 
+expanded into a new set of Gaussian beams. These were 
+traced to the main reflector employing the diffracted 
+Gaussian beam analysis. Fig. 13 shows the electric field in 
+the offset plane at a distance of 4.5m from the main 
+reflector. Again, the agreement with PO results is very good. 
+4 Conclusions 
+A novel diffracted Gaussian beam approach for analysing a 
+quasi-optical multi-reflector system has been proposed. The 
+method is especially well suited to the analysis of electrically 
+large multi-reflector systems where physical optics is 
+computationally expensive. As opposed to GTD, the new 
+method is hghly modular and does not suffer from caustic 
+problems. It has been tested for an offset Cassegrain 
+configuration and good agreement with PO has been 
+obtained. 
+IEE Proc-Microw. Antennus Propay., 149, No. 3, June 2002 166 
+===== PAGE 8 =====
+I - DGBA; E-plane r 
+-10 
+-20 
+m D 
+m 
+z- -30 
+._ - 
+40 
+-50 
+-1 .o -0.5 0 0.5 1 .o 
+radius, m 
+Fig. 13 Cornparison of the near,field jrom the main reflector ut 30 GHz with the results of physical optics 
+References 
+KILDAL, P.-S.: ‘Synthesis of multireflector antennas by kinematic 
+and dynamic ray tracing’, IEEE Trans. Antennas Propug., 1990, 38, 
+MARTIN, R.J., and MARTIN, D.H.: ‘Quasi-optical antennas 
+for radiometric remote-sensing’, Electron. Commun. Eng. J., 1996, 
+pp. 37-48 
+CHOU, H.-T., and PATHAK, P.H.: ‘Uniform asymptotic solution 
+for the EM reflection and diffraction of an arbitrary Gaussian 
+beam by a smooth surface with an edge’, Radio Sci., 1997, 32, (4), 
+CHOU, H.-T., PATHAK, P.H., and BURKHOLDER, R.J.: ‘Novel 
+Gaussian beam method for the rapid analysis of large reflector 
+antennas’, ZEEE Trcms. Antennas Propug., 2001, 49, (6), pp. 88G-893 
+TAKENAKA, T., and FUKUMITSU, 0.: ‘Asymptotic representa- 
+tion of the boundary-diffraction wave for a three-dimensional 
+pp. 1587-1599 
+pp. 1319-1336 
+Gaussian beam incident upon a Kirchhoff half-screen’, J. Opt. Soc. 
+Am., 1982, 72, (3), pp. 331-336 
+DAUBECHIES, I.: ‘The wavelet transform, time-frequency localisa- 
+tion and signal analysis’, IEEE Trans. In$ Theorjl, 1990, 36, (5), 
+6 
+VV. 961-1005 
+7 EINZIGER, P.D., RAZ, S., and SHAPIRA, M.: ‘Gabor representa- 
+tion and aperture theory’, J. Opt. Soc. An?. A, Opt. Image Sci., 1986,3, 
+(4), pp. 508-521 
+LUGARA, D., and LETROU, C.: ‘Alternative to Gabor’s repre- 
+sentation of plane aperture radiation’, Electron. Lett., 1998, 34, (24), 
+pp. 2286-2287 
+9 DESCHAMPS, G.A.: ‘Ray techniques in electromagnetics’, Proc. 
+IO GRASP8 reflector analysis code user manual, TICRA, Copenhagen, 
+Denmark 
+8 
+ZEEE, 1972, 60, (9), pp. 1022-1035 
+IEE Proc.-Microw Antennas Propug., 149, No. 3, June 2002 167 

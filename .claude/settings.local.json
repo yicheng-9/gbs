@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import PyPDF2; print\\('PyPDF2 available'\\)\")",
+      "Bash(python -c \"import pdfplumber; print\\('pdfplumber available'\\)\")",
+      "Bash(pip list *)",
+      "Bash(pip install *)",
+      "Bash(python -c ' *)",
+      "Bash(where python *)",
+      "Bash(pip show *)",
+      "Bash(E:python312python.exe -c ' *)",
+      "Bash(/e/python312/python.exe -c ' *)",
+      "Bash(python gbma_solver.py)",
+      "Bash(python main.py)",
+      "Bash(python -c \"import numpy as np; print\\(np.__version__\\); print\\(hasattr\\(np, 'trapezoid'\\)\\)\")",
+      "Bash(MPLBACKEND=Agg timeout 120 python main.py)",
+      "Bash(MPLBACKEND=Agg python main.py)",
+      "Bash(python -c \"import PyPDF2; print\\('ok'\\)\")",
+      "Bash(python -c \"from PyPDF2 import PdfReader; print\\('ok2'\\)\")",
+      "Bash(python -c \"import pikepdf; print\\('pikepdf ok'\\)\")",
+      "Bash(python -c \"import pdfplumber; print\\('pdfplumber ok'\\)\")",
+      "Bash(python -c \"import fitz; print\\('fitz ok'\\)\")",
+      "Bash(python *)"
+    ]
+  }
+}

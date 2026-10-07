@@ -1,0 +1,1031 @@
+===== PAGE 1 =====
+880 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+Novel Gaussian Beam Method for the Rapid Analysis
+of Large Reflector Antennas
+Hsi-Tseng Chou, Prabhakar H. Pathak, Fellow, IEEE, and Robert J. Burkholder, Senior Member, IEEE
+Abstract— A relatively fast and simple method utilizing
+Gaussian beams (GBs) is developed which requires only a few sec-
+onds on a workstation to compute the near/far fields of electrically
+large reflector antennas when they are illuminated by a feed with
+a known radiation pattern. This GB technique is fast, because it
+completely avoids any numerical integration on the large reflector
+surface which is required in the conventional physical optics (PO)
+analysis of such antennas and which could take several hours
+on a workstation. Specifically, the known feed radiation field
+is represented by a set of relatively few, rotationally symmetric
+GBs that are launched radially out from the feed plane and with
+almost identical interbeam angular spacing. These GBs strike the
+reflector surface from where they are reflected, and also diffracted
+by the reflector edge; the expressions for the fields reflected and
+diffracted by the reflector illuminated with a general astigmatic
+incident GB from an arbitrary direction (but not close to grazing
+on the reflector) have been developed in [1] and utilized in this
+work. Numerical results are presented to illustrate the versatility,
+accuracy, and efficiency of this GB method when it is used for
+analyzing general offset parabolic reflectors with a single feed or
+an array feed, as well as for analyzing nonparabolic reflectors
+such as those described by ellipsoidal and even general shaped
+surfaces.
+Index Terms— Gaussian beams, reflector antennas.
+I. I NTRODUCTION
+A
+FAST procedure based on a novel application of Gaussian
+beams (GBs) is described in this paper for predicting the
+near and far fields of electrically large reflectors, with slowly
+varying surface properties, when they are illuminated by a given
+feed antenna or a feed array. The conventional procedure for
+computing the fields of reflectors requires a numerical integra-
+tion of the physical optics (PO) integral over the reflector sur-
+face; this can become computationally very slow and highly in-
+efficient for large reflectors. Computational speed is particularly
+essential when performing reflector antenna synthesis wherein
+the reflector radiation pattern needs to be computed during each
+iterative step of the synthesis algorithm until the desired radia-
+tion pattern is obtained to within some prescribed bounds. Thus,
+in such a synthesis procedure, the numerical PO method may be-
+come nearly intractable for large reflectors. The present GB pro-
+cedure for predicting the near and far fields of the reflector an-
+Manuscript received November 19, 1996; revised March 6, 2000. This work
+was supported in part by the Joint Services Electronics Program and the National
+Science Council of Taiwan.
+H.-T. Chou is with Yuan-Ze University, Department of Electrical Engi-
+neering, Chung-Li, Taiwan.
+P. H. Pathak and R. J. Burkholder are with The Ohio State University Elec-
+troScience Laboratory, Department of Electrical Engineering, Columbus, OH
+43212 USA.
+Publisher Item Identifier S 0018-926X(01)03586-4.
+tenna completely avoids any time-consuming numerical PO in-
+tegration on the reflector surface. As a result, the present method
+is extremely fast as will be demonstrated for the analysis of large
+reflector antennas. A wide variety of applications of this GB
+method are presented here to illustrate its efficiency, versatility,
+and accuracy by analyzing not only offset parabolic reflectors
+with a single feed or an array feed, but also nonparabolic reflec-
+tors made up, for example, of ellipsoidal and even more general
+shaped surfaces.
+Specifically,the electromagnetic (EM)radiation from aknown
+feed, or from a known feed array, is represented by a set
+of relatively few GBs. The number of GBs required and the
+waists of the GBs at their launch points, as well as their axial
+direction at launch, are selected according to some simple
+criteria. An efficient point matching procedure, or a least squares
+method, can be employed for accurately determining the GB
+expansion coefficients (i.e., the initial amplitudes of the GBs
+at their points of launching). Once these GBs are launched
+from a single point, or in special cases from a very small
+number of points in the feed plane, they strike the reflector
+surface where they undergo reflection and diffraction by the
+surface of the parabolic reflector and its edge, respectively.
+Explicit, closed-form expressions for the fields associated with
+the reflection and diffraction of any given incident GB by a
+smooth reflector containing an edge, which have been derived
+in detail in a previous paper [1], are employed here. It is
+important to note that the closed-form expressions for the fields
+associated with the reflection and diffraction of any single GB
+which is incident on the reflector have been developed in [1],
+via an asymptotic evaluation of the corresponding radiation
+integral that is approximated therein by PO, for the single
+GB illumination case. Thus, the GB analysis presented here
+for predicting the total reflector near/far fields provides an
+asymptotic closed-form analytical solution of the PO integral
+for reflectors; this is in contrast to the conventional numerical
+evaluation of the PO integral. Indeed, the present closed-form
+PO-based GB analysis is shown here to have essentially the
+same level of accuracy as the numerical PO solution. It is well
+known that the PO approximation can be improved by using
+an edge diffraction correction based on the physical theory
+of diffraction (PTD) [2], [26], [3]; such a correction can be
+incorporated in a straightforward manner. Clearly, since the
+present GB analysis actually represents a closed-form solution
+of the PO integral itself, this GB analysis can thus be corrected
+by simply adding to it the exact same PTD correction as
+is done for the conventional solution based on a numerical
+evaluation of the PO integral. In particular, the PTD edge
+diffraction correction can be added to the PO solution as a
+0018–926X/01$10.00 © 2001 IEEE
+===== PAGE 2 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 881
+line integral contribution around the reflector edge [4]–[10],
+[27]. Such a PTD correction provides an improvement to
+the PO based analysis primarily in regions of lower field
+levels. In the case of reflector antennas the PTD thus provides
+some improvement in the wide-angle sidelobe region. As an
+alternative to the PTD-based correction to PO, one can first
+employ the present PO-based GB solution in the region of
+the main beam and first few sidelobes, and then switch to the
+uniform geometrical theory of diffraction (UTD) [10]–[13] ray
+solution in the region of the intermediate and far-out sidelobes
+of reflector antennas. One notes that the UTD ray solution
+fails in regions of focused or nearly focused fields such as
+within the main beam regions of parabolic reflectors with a
+feed located at or near the reflector focus. Thus, the common
+approach for avoiding this difficulty of the UTD ray approach
+in focused regions of the radiated fields is to utilize the PO
+approximation in those regions where UTD fails; however,
+because the PO integral is evaluated numerically over the large
+reflector surface, it thus becomes highly inefficient as indicated
+earlier. The UTD approach, on the other hand, requires no
+integration on the reflector, and hence it is very efficient in
+its regions of validity. It is seen that the present GB approach
+retains all the advantages of the UTD ray method, and it has
+the important added advantage that it also remains valid in
+regions of focused or nearly focused fields where UTD fails.
+In fact, the present PO-based GB method may be viewed as
+a UTD for GBs which is analogous to UTD for rays except
+that the rays are now replaced here by GBs (where the GBs,
+unlike rays, remain valid in regions of focused fields). A
+PTD correction to this PO-based GB method, or alternatively
+switching from this GB to a UTD analysis outside the main
+beam region, can be accomplished in a straightforward fashion
+to improve the PO-based GB method as mentioned above;
+however, these have not been included in the present work.
+The use of GBs as EM field basis functions has been studied
+and demonstrated by several authors in the past, notably in
+[14]–[18] to represent the fields of aperture antennas. The
+Gabor expansion was used therein to represent the known
+aperture field with Gaussian functions as basis elements in
+that expansion. The field of each of these Gaussian elements
+evolved from the aperture to the external region thereby directly
+providing the near and far fields of the aperture in closed
+form. The GB expansion employed here has some similarities
+to that in [14]–[16] but at the same time is also significantly
+different from it in the manner in which the GBs are chosen
+as will be discussed below. The aperture is discretized in
+[14]–[16] using a doubly periodic array of lattice points on
+which the Gaussian basis elements are centered. The fields
+external to the aperture consist of a set of GBs (where each GB
+is described within the paraxial region of the fields radiated by
+each Gaussian basis element). The GBs are launched radially
+outward from each of the periodic array of points that are
+chosen to discretize the aperture as in Fig. 1. Such a field
+representation constitutes a GB expansion in “phase-space.”
+When the period
+and of the lattice is specified in the
+and directions, then the Gabor expansion automatically
+provides information on the launching angle and the waist
+size of the rotationally symmetric GBs that emanate from
+Fig. 1. GB expansion for the fields radiated from a periodic array of lattice
+points in the aperture defined over /106/120/106/20/97/61/50; /106/121/106/20/98/61/50; /122/61/48. The GBs
+are launched radially out from each lattice point in the periodic array. The lattice
+points may typically correspond to the phase center of each subaperture (of size
+/68 /2 /68).
+each lattice point. While there are an infinite number of
+GBs launched from each of the finite number of lattice
+points in [14]–[16], only the finite number of propagating
+GBs are significant outside the close neighborhood of the
+aperture; all the remaining GBs are evanescent and contribute
+negligibly except for points very close to the aperture. In
+practice, only a few evanescent GBs are typically needed in
+addition to the finite number of propagating GBs to accurately
+synthesize the original field distribution in the aperture. The
+coefficients of the GB expansion; i.e., the initial complex
+amplitudes of the GBs at launch, are found in [14]–[16] using
+the biorthogonality properties of the Gabor expansion. In [16],
+a Gabor-based GB expansion was also employed for analyzing
+the transmission of the fields of a planar aperture through
+plane and curved dielectric layers. However, previous work
+in using the Gabor representation was primarily restricted
+to two-dimensional (2-D) geometries in which the aperture
+was one-dimensional (1-D) (or linear) in extent; also, the
+diffraction of GBs was not included in those applications.
+An analysis of the reflector radiation pattern using a single
+GB to model the feed radiation was developed in [17] for
+the three-dimensional (3-D) problem, but the reflector edges
+were illuminated negligibly in that case also, and so the
+diffraction of the GB by the edges was excluded in [17].
+An analysis of GB diffraction by a straight edge has been
+presented previously in [19]–[22]. It is noted that the work
+presented here is based on [1] which allows one to treat
+the substantially more general and practical problem of GB
+reflection and diffraction by a general curved surface which
+is truncated in a rather general but locally planar curved edge.
+In the present application of the GB method, a procedure dif-
+ferent from the Gabor expansion is utilized to analyze the fields
+radiated by a 3-D offset parabolic reflector that is illuminated
+by a realistic feed antenna as mentioned earlier. Furthermore,
+the feed illumination is such that the effects of diffraction by
+the reflector edge are important, as is true in most applications,
+and hence cannot be neglected. It is noted that a Gabor expan-
+sion could also have been utilized in the present GB approach
+to represent the fields incident on the reflector from the given
+===== PAGE 3 =====
+882 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+feed antenna. An advantage of the Gabor type expansion is that
+it guarantees completeness a priori and essentially removes any
+arbitrariness in the choice of initial beam parameters once the
+lattice spacing is chosen. However, the Gabor expansion gives
+rise to nonidentical GBs with nonuniform angular or interbeam
+spacing at launch thus providing less control on the choice of
+initial beam parameters; also, the coefficients of the GB ex-
+pansion based on the Gabor representation generally require
+a relatively complicated numerical computation of biorthogo-
+nality integrals. Therefore, a somewhat different approach is
+employed here as it is very convenient for engineering appli-
+cations. Specifically, the set of
+GBs that are launched from
+each of the lattice points of Fig. 1 in the present approach are
+such that they have the same interbeam spacing, (defined
+later) and, except for the different launching directions and po-
+larization, all of the GBs are otherwise identical and rotation-
+ally symmetric. Relatively simple rules are developed for the
+choice of initial GB parameters in the present approach which
+also offer more control of these parameters. The computation
+of the GB coefficients (i.e., initial GB launching amplitudes)
+in the GB expansion are found through a relatively straightfor-
+ward and efficient point-matching approach, or a least squares
+approach. It is important to note that in the present approach, the
+initial launching amplitudes of the GBs in the expansion for the
+feed radiation are chosen to match the far zone fields of the feed
+antenna which illuminates the reflector, rather than to match the
+feed antenna aperture field distribution. Consequently only the
+usual propagating GBs need to be included in the present ex-
+pansion and no evanescent GBs are required.
+It is noted that, for most realistic single feed reflector antenna
+applications, only one lattice point [
+at in Fig. 1,
+where is the phase center of the feed in the feed coordinates
+( )] is sufficient. For feed arrays, it may be necessary
+to have more than one lattice point if the reflector is not truly
+in the far zone of the entire array. For offset parabolic reflec-
+tors whose projected apertures range from about
+to in
+diameter (where free space wavelength), it is seen in the
+present applications that the number of GBs required is ap-
+proximately 45 with (corresponding to a single lattice
+point at the phase center, of the feed antenna).
+The format of this paper is as follows. In Section II, the gen-
+eral procedure for expanding the fields radiated by the feed an-
+tenna in terms of GBs is developed. The analysis of the near- and
+far-zone radiation pattern of fairly general offset reflector an-
+tennas is presented next in Section III specifically using the rel-
+atively simple closed-form expressions developed earlier in [1]
+for the reflection and diffraction of an arbitrary GB by a curved
+edge in a curved surface. Several numerical results based on this
+GB method are presented in Section IV for analyzing parabolic,
+ellipsoidal and even shaped reflectors; the computation of these
+results are shown to be extremely fast and accurate. In partic-
+ular, it is noted that the present approach can provide the near
+and far fields of relatively large sized reflectors in a matter of
+only a few seconds on a workstation, whereas, the conventional
+numerical integration of the PO integral over the reflector sur-
+face requires several hours on the same workstation to furnish
+the same results. An
+time dependence for the fields is as-
+sumed and suppressed.
+Fig. 2. Coordinate system /40/120/59/121/59/122/41whose origin /79 is the phase
+reference for the feed. Also, coordinates /40/120 /59/121/59/122/41fixed in the
+/109th GB launched from the /110th lattice point in the /122/61/48feed plane.
+II. GB E XPANSION FOR THE FEED ANTENNA RADIATION
+Let the feed antenna, which illuminates the reflector, radiate
+the electromagnetic fields . One can express the fields
+in the far zone of the feed antenna as
+(1a)
+(1b)
+where the radiation pattern functions and in any direc-
+tion (with as in Fig. 2) are known. Here is the free
+space wavenumber and is the free space impedance .
+One may represent in (1a) in terms of a GB expan-
+sion, i.e., in terms of a sequence of GBs, by
+(2)
+where propagating rotationally symmetric GBs are launched
+from each of the lattice points in the feed plane which is the
+plane as depicted previously in Fig. 1 such that the an-
+gular interbeam spacing [see (6)] between any pair of adja-
+cent GBs is a constant. A typical th lattice point at where
+is shown in Fig. 2. The direction is per-
+pendicular to the feed plane and it constitutes the feed boresight
+direction. Comments will be added later to deal with general
+rules for selecting the values of and . The magnetic field
+associated with each rotationally symmetric GB basis function
+===== PAGE 4 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 883
+in (2) is given by
+(3)
+where are local coordinates which are
+fixed in the th propagating GB launched from the th lattice
+point with being the axial direction of that GB. The
+additional phase term in (2) simply references the phase
+of launched from to the feed coordinate origin at the
+central point . In this work, it is of interest to evaluate
+in (2) to represent [on the left hand side of (2)] in the
+far zone of the feed; hence, it suffices to choose the polarization
+vector by
+(4)
+The above value of is valid within the paraxial region of the
+GB in (3); this is certainly true in the far zone of the feed. Fur-
+thermore, in this far-zone representation, the axis of every
+th
+GB beam emanating from all the lattice points will always be
+parallel to each other, so that the polarization in (4) is identical
+for every th GB launched from each of the lattice points.
+The coefficients of expansions in (2) can be found in a
+relatively simple manner, since the feed pattern is known, using
+the point matching technique so that (2) can be reduced to a set
+of linear simultaneous equations that can be solved using stan-
+dard matrix inversion. For reflector feed antenna applications,
+the
+total coefficients are relatively small in number
+so that the size of the matrix to be inverted is not large, thereby
+making it very efficient to find . Alternatively, the can
+be found via a least squares approach.
+For the present application, it is important to note that one
+is concerned here with the development of a GB expansion for
+representing the radiation pattern of a feed antenna in which
+the feed is always relatively small in size as compared to the
+reflector which it illuminates so that it is essentially in the far
+zone of the feed; hence, for this application, and even for a feed
+array which can be used to illuminate a reflector under similar
+conditions, it suffices to have just a single lattice point (i.e.,
+only) at in Fig. 2 from where rotationally symmetric
+GBs are launched. Thus, there are a total of only
+GBs in this case. The case where a large feed
+array needs to be decomposed into subarrays is the topic of a
+separate paper which also addresses the problem of reflector
+feed array synthesis in contoured beam applications [23]. Before
+determining the number of GBs, one can define a cone of half
+angle
+whose apex is at . This cone half angle is
+measured from the cone axis which is also the feed axis (or
+feed boresight); it is chosen to adequately cover the solid angle
+Fig. 3. Cone of half-angle /18 which encloses the reflector with a feed at/79.
+The reflector has an offset as shown by the distance /100. The projected reflector
+diameter is /68, and the reflector focal length is /70.
+subtended by the reflector edge from the point as shown
+in Fig. 3. It is important to note that the feed pattern needs to
+be represented in terms of the GB expansion only within this
+cone of half angle
+to calculate the fields scattered from the
+reflector surface; thus it is not necessary to find a GB expansion
+for the feed radiation outside this cone. It is convenient next to
+introduce the mapping
+(5)
+It is clear from (5) that and that
+with . Since is undefined as
+it is convenient to let in this case. The angular inter-
+beam separation is chosen to be a constant between all the GBs.
+In particular, this condition can be satisfied if the interbeam an-
+gular spacings
+and in the space satisfy the
+following:
+(6)
+where is a constant. The axial direction of each of the
+GBs launched from the single point is shown by dots in
+the spherically angular space of Fig. 4. The beams
+in Fig. 4 can be regrouped into a set of beams in the
+space. Thus, , and for each th GB
+there is a corresponding pair of numbers .
+According to Fig. 4, one allows to vary from to along
+the axis where
+(7)
+(8)
+and denotes the integer portion of the argument. For a
+given , the number of GBs in the direction is
+(9)
+===== PAGE 5 =====
+884 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+Fig. 4. Dots indicate the directions of the /77GBs in the space /40/18/59/18/41. This
+/40/18/59/18/41space covers the region on the reflector surface and its neighborhood
+which lies within the cone of half angle /18 of Fig. 3.
+The index in the direction is chosen such that if is an even
+number then
+(10)
+otherwise
+(11)
+Using (8) and (10) in yields
+(12)
+Up to this point, it is assumed that is known so that is
+therefore also known for a given . With this information,
+one can solve for the coefficients in (2) for the
+case of interest using the point matching technique
+as discussed earlier.
+For the case, one is referred to Fig. 1 which indicates
+how GBs are launched from lattice points. As indicated
+earlier, one may need if the reflector is not almost in the
+far zone of a feed array. In such situations, usually suf-
+fices. Points of the rectangular lattice may correspond to the
+phase centers of subapertures into which the original aper-
+ture ; is discretized. This situation can be
+treated in exactly the same fashion as done for the single lat-
+tice ( ) case, because the GBs launched from each th
+lattice point in Fig. 1 are required to represent
+only the radiation field which is generated by each of the corre-
+sponding th subaperture containing only the th lattice point.
+Furthermore, one can define a for each th lattice point
+in the same way as defined in Fig. 4 for the case,
+except that in Fig. 3 must now be replaced by of Fig. 2.
+The procedure to find the amplitudes of the GBs launched
+from the th lattice is then exactly analogous to that done above
+for the case.
+It now remains to present some rules for determining and
+the parameter in (3) which indicates the size of the GB waist.
+Here, is the same for each of the identical, rotationally sym-
+metric GBs at launch. It was determined through numerical ex-
+perimentation in [6], [27] that
+(13)
+with (where free space wavelength). This result
+was obtained in two dimensions (2-D) by first assuming that
+the radiation pattern function (in this case, and ) is slowly
+varying with respect to . It was also assumed for the 2-D
+case that for a given GB in the far field, only the two nearest or
+adjacent GBs overlap significantly in the vicinity of the axis of
+the given beam. However, the condition in (13) is found, again
+via numerical experimentation, to be also sufficient for guaran-
+teeing an adequate sampling of the feed pattern for the three-di-
+mensional (3-D) case of interest in this work. That this condi-
+tion in (13) should work well for 3-D is also due to the choice
+of almost identical interbeam angular spacing as illustrated in
+Fig. 4 where it is seen that the GBs along diametrically oppo-
+site sides of any hexagonal lattice resemble three overlapping
+GBs of the 2-D case mentioned earlier. The choice of the rela-
+tionship between
+and defined in (13) was found to give
+excellent reproduction of the radiation pattern when used in the
+GB expansion.
+It therefore remains to determine . Firstly, one notes that the
+half width of each of the rotationally symmetric GBs launched
+from the feed plane has a spot area at any axial
+distance from the launch point, where for the special GB
+whose axis is along (see Fig. 3) the is given by
+(14)
+A solution for in terms of is obtained from (14) as
+(15)
+where it is generally more advantageous to pick the smaller of
+the two values in (15) to ensure a smoother GB representation
+of the feed pattern with fewer beams as is evident from (13).
+The result in (15) provides a real valued only if
+(16)
+From (14) and (16), it follows that the spot size area is given
+by
+(17)
+===== PAGE 6 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 885
+It was also indicated in [1, Appendix B] that a simple
+closed-form approximation is available to accurately locate the
+complex point of diffraction associated with the diffraction of
+an incident GB by the edge of the reflector which it illuminates;
+this simple closed-form result is valid provided
+(with defined in [1], and also later in Section III of this
+paper) which leads to
+(18)
+In (18), is the diameter of the circular boundary which cir-
+cumscribes the projected aperture projected in any constant
+plane by the reflector as for example in Fig. 3. Clearly must
+therefore satisfy both the above conditions, namely the ones in
+(17) and (18), simultaneously. Therefore, combining (17) and
+(18) yields
+or
+(19)
+Consequently, one may pick a convenient value of which sat-
+isfies (19); this value of in turn provides a choice for the value
+of via (15) and hence also for via (13) thereby specifying
+each GB completely at launch. For more complex feed patterns,
+one can always decrease from its value in (13) while keeping
+the same as in (15); this allows the use of more GBs that may
+become necessary in this case to more accurately reproduce the
+complexity in the pattern. In general, the conditions in (13) and
+(15) are sufficient for most types of simple feeds.
+III. S CATTERING OF EACH GB IN THE EXPANSION FOR THE
+FEED RADIATION WHICH ILLUMINATES THE REFLECTOR
+SURFACE
+Once the far-zone magnetic field radiated from the feed an-
+tenna is expanded in terms of a set of GBs as shown in Section II,
+then each GB which is launched from the feed plane in this ex-
+pansion now illuminates the reflector from where it is scattered.
+It is noted that the reflector may not be fully in the far zone of the
+feed [as in the case where
+in (2)] even though the GB
+expansion is obtained from a knowledge of the far zone feed
+radiation pattern, and the GB expansion thus obtained remains
+valid even within the near zone (but excluding the extreme near
+zone of the feed). The net field scattered by the reflector when
+it is illuminated by the feed antenna is thus represented as a su-
+perposition of the scattered fields produced by each GB when
+they become incident on the reflector. The explicit results for the
+scattering of an arbitrary GB by a smooth, electrically large re-
+flecting surface containing an edge were developed in [1]; these
+results which were obtained via an asymptotic evaluation of the
+PO integral for the scattered field are summarized below for
+convenience.
+In [1], it was assumed that the surface of the original reflector
+could be approximated by a local paraboloid at the point
+(a)
+(b)
+Fig. 5. (a) The projected area of the parabolic surface /83on the /122/61/48plane
+and (b) its mapping to the /40/26/59/32/41coordinate system. The quantities /26/59/30
+and /30are explicitly shown.
+where the th incident GB axis intersects the reflector surface
+(or its mathematical extension past the edge). The local parab-
+oloid at is given by
+(20)
+in which is normal to the original surface at , and
+are the original principal surface directions at ,
+respectively, as in Fig. 5. Also, is a unit vector normal to the
+plane containing the edge with the principal radii of curvatures
+, given by
+(21)
+where denotes the coordinate system for the
+local parabolic surface at . It is assumed that the incident
+magnetic field of the th rotationally symmetric GB incident
+at is given by [1]
+(22)
+===== PAGE 7 =====
+886 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+where is the position vector in the
+incident GB coordinate system which is also centered at
+and is the incident magnetic field at , i.e., at
+. The , , and are the elements of
+the GB complex curvature (or phase) matrix at .
+In particular, (22) reduces at to the following:
+(23)
+with
+(24a)
+and
+(24b)
+It is clear that appearing in (23) and (24a) represents the dis-
+tance associated with the th GB. The transformation
+matrix between the coordinates fixed in the incident GB and the
+local surface coordinate system both of which are centered at
+is
+(25)
+Clearly, the transformation matrix in (22) is known. The
+scattered field which is produced when a GB is incident
+on the local parabolic surface can be written asymptotically for
+large
+as
+(26)
+where represents the reflected field contribution to the
+scattered field which actually would be the only contribution if
+the edge were absent. Also, represents the edge diffracted
+field contribution, and is a transition function that is ob-
+tained via uniform asymptotics, which provides a modification
+to the reflected component of the field resulting from the pres-
+ence of the edge. Indeed, when the edge is present, only a part
+of the incident GB is reflected from the surface, and the rest is
+diffracted by the edge; thus, the effect of the surface reflection
+is modified by the edge and the extent of this modification de-
+pends on the proximity of
+to the edge as measured by the
+parameter of the transition function . It is noted that
+denotes either the scattered electric field or the scattered
+magnetic field according to the function which is
+defined below. The individual field components of are sum-
+marized in detail next.
+A. Reflection Contribution
+The reflected field is given by [1]
+(27)
+where
+for
+for .
+(28)
+and
+(29)
+In (23), denotes the distance between the observation point
+and the complex stationary or reflection point on the complex
+extension of the surface at in the coordinate
+system at , and denotes its complex direction pointing to-
+ward the observer at also in the system.
+It is noted that the quantities and are
+given in closed form as
+(30a)
+(30b)
+(30c)
+and
+(31)
+in which the coefficients and are
+(32)
+===== PAGE 8 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 887
+(33)
+(34)
+(35)
+(36)
+(37)
+B. Edge Diffraction Contribution
+The edge diffracted field is given by [1]
+(38)
+where
+(39)
+(40)
+(41)
+and
+(42)
+The coordinates above pertain to a complex saddle
+point associated with edge diffraction. It is convenient to employ
+polar coordinates in which to express ; in particular,
+let
+(43a)
+(43b)
+At this saddle point, the values of and are denoted
+by and , respectively, or
+(44a)
+(44b)
+Fig. 6. Near-field pattern at 5 GHz of an offset parabolic reflector illuminated
+by a Huygens source located at the focus where /40/68/61/52 /48/59/70/61/51 /54/59/100/61
+/48/59/122/61/52 /48/41. Forty-eight GBs are used.
+where as in Fig. 6(a) and (b) with
+(45)
+(46)
+(47)
+and
+(48)
+(49)
+The derivatives and are explicitly given in [1] by
+(50)
+and
+(51)
+It is noted that the saddle point which corresponds to
+in an appropriate polar coordinate system [1] is the
+solution of
+(52)
+where are given by [1]
+(53)
+(54)
+===== PAGE 9 =====
+888 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+(55)
+(56)
+(57)
+with and as
+(58)
+(59)
+(60)
+(61)
+The approximate but accurate closed-form solution of (52) is
+shown in [1], and it will not be repeated here.
+C. Uniform Transition Function
+The transition function is given by [1]
+erf (62)
+where denotes the Error function erf
+and the parameter depends on
+the complex distance between the complex saddle point for
+reflection and the complex saddle point for edge diffraction
+[see (63) at the bottom of the page], which is given in [1]. The
+choice for the branch of the square root is based on a Taylor
+expansion around the complex saddle point for reflection, i.e.,
+sign
+Re sign (64)
+where
+(65)
+and denote a set of appropriate polar coordinate
+values [1] corresponding to . Thus,
+(66)
+Fig. 7. Near-field pattern at 5 GHz of an offset parabolic reflector illuminated
+by a Huygens source located at the focus where /40/68/61/52 /48/59/70/61/51 /54/59/100/61
+/48/59/122/61 /49/48/48/41. Forty-eight GBs are used.
+with . In (65) and (66), is given by [1]
+(67)
+However,itissuggestedthatforsmall theTaylorexpansionfor
+of (63), which is essentially shown in (64), may be employed
+directly to avoid any numerical error in the transition region.
+IV . NUMERICAL RESULTS AND DISCUSSION
+In this section, some numerical results are presented for the
+GB-based analysis of the fields radiated from an offset parabolic
+reflector illuminated by a single feed or feed array, as well as
+from an offset ellipsoidal reflector, and from a shaped reflector
+designed with a single feed to produce a contoured beam for the
+continental United States (CONUS). The accuracy and efficiency
+of the present GB approach is also discussed by comparing it with
+a reference solution obtained via a conventional direct numerical
+evaluation of the PO integral over the surface of the reflector.
+The first case of interest here is the investigation of the near
+field pattern of an offset parabolic reflector. The geometry for
+this case is shown in Fig. 3 where the diameter
+of the pro-
+jected aperture is given by with , and the
+focal length . Also is the location of the output
+plane, and the near-field patterns are in the plane with
+. The feed antenna is a simple Huygens source located at
+the focus, and the frequency is 5 GHz. The Huygens source is
+tilted so that its boresight (or axis) makes an angle
+in the
+plane given by , and its electric current moment lies in
+the plane. Figs. 6 and 7 show the near field patterns of
+(63)
+===== PAGE 10 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 889
+(a)
+(b)
+(c)
+Fig. 8. Co-polar and cross-polar far-field pattern at 10 GHz of an offset
+parabolic reflector used in Fig. 6 when it is illuminated by a Huygens source
+located at the focus. 32 GBs are used. (a) /30/61/48plane (co-polar). (b)
+/30/61/57 /48plane (co-polar). (c) /30/61/48plane (cross-polar). Note that there is
+no cross-polar field in the /30/61/57 /48plane.
+this reflector at two different output planes. In particular, Fig. 6
+shows the pattern in the output plane located at which
+is relatively very close to the reflector, whereas Fig. 7 shows the
+pattern in the output plane located at
+which is still in
+the near zone but much farther from the reflector. Both Figs. 6
+and 7 show very good agreement with the reference solution. It
+is noted that the present GB approach is based on the asymptotic
+(a)
+(b)
+Fig. 9. Far-field pattern at 10 GHz of an offset parabolic reflector used in Fig. 6
+when it is illuminated by a defocussed Huygens source located at/40/48/58/59/48/58/59/51/48/41.
+Thirty-two GBs are used. (a) /30/61/48plane. (b) /30/61/57 /48plane.
+Fig. 10. CPU time required on a silicon graphics workstation for the reference
+numerical PO integration-based far field computation compared with that based
+on GB expansion. The time shown is for computing 1802 pattern points for the
+reflector used in Figs. 6–9. Note that the vertical scale is logarithmic.
+development in [1] that employs a Fresnel approximation within
+the PO radiation integral for the scattered field produced by each
+incident GB. It is expected that some errors will occur if the
+field point is not in the Fresnel zone over the spot area on the
+===== PAGE 11 =====
+890 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+(a)
+(b)
+Fig. 11. Far-field pattern at 121.803 GHz for the parabolic reflector utilized
+in Figs. 6–9 except that it is illuminated by a /57/2/57element rectangular array
+with an interelement spacing of a half wavelength. The center of the array is
+at the focus of the parabolic reflector. (a) /30/61/48plane. (b) /30/61/57 /48plane.
+Eighty-nine GBs are used.
+reflector which is made by each GB in the feed expansion. Fig. 7
+shows the improvement in accuracy when all the field points are
+properly located in the Fresnel zone at a larger distance
+as compared to . Also, in the present application,
+the spot area of the incident GB on the surface of the reflector
+is assumed to be small compared with the total surface area of
+the offset reflector as discussed in Section II. The total number
+of GBs used is 48 in Figs. 6 and 7.
+The second case of interest is the computation of the far-field
+pattern for the same reflector as the one used in Figs. 6 and 7.
+Again, the Huygens source feed is at the focus and its axis is
+tilted at an angle
+in the plane as before for this reflector
+whose far zone pattern is shown in Fig. 8 at 10 GHz. When the
+feed is defocussed, the far-zone pattern changes to that in Fig. 9.
+It is noted that, being an asymptotic high-frequency solution,
+the accuracy of the GB based solution increases with frequency.
+Fig. 12. Near-field pattern at 11.803 GHz of an offset ellipsoidal reflector
+illuminated by a Huygen’s source placed on the axis at a distance of 70 in
+from the origin (see Fig. 3). Note that (
+/68/61/56 /48in, /100/61/48in, /122/61 /49/48/48in).
+Approximately 50 GBs are used.
+Fig. 13. Far-field pattern at 11.803 GHz of an offset ellipsoidal reflector
+illuminated by a Huygen’s source placed on the axis at a distance of 70 in from
+the origin (see Fig. 3). Note that (
+/68/61/56 /48in, /100/61/48in) for this case, which
+is the same as for Fig. 12 except that this figure depicts the far-field pattern.
+Approximately 50 GBs are used.
+For the near-field case in Figs. 6 and 7, a total of 48 GBs is used
+as indicated above; in the far zone one can further reduce the
+number of GBs to 32 as in Figs. 8 and 9 and this number of GBs
+stays the same even when the frequency is doubled. It is noted
+that Fig. 8(c) indicates the cross-polar field radiated in the far
+zone by the reflector. The CPU time for the GB approach is ap-
+proximately 10 s on a Silicon Graphics workstation for a total
+of 1802 field point samples used in each of the plots of Figs. 8
+and 9; on the other hand, the CPU time for the reference numer-
+ical PO solution increases rapidly with frequency as shown in
+Fig. 10, and is typically given in terms of hours. The numerical
+PO integration code used here, to provide the reference solu-
+tion, employs a surface discretization in which the surface el-
+ements are
+square wavelengths in size. It is possible
+to improve the efficiency of this numerical PO code somewhat;
+===== PAGE 12 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 891
+Fig. 14. Normalized co-polarization contours based on the GB approach for CONUS coverage by a shaped concave reflector with a /40/99/111/115/18/41feed pattern at 12
+GHz with /108/61/49 /56/58/53/49. Approximately 200 GBs were used.
+Fig. 15. Normalized co-polarization gain contours based on the numerical PO integration approach for the same shaped reflector case as in Fig. 14.
+however, even with that improvement, the numerical PO code
+will still require significantly much larger computational time,
+especially for higher frequencies, than the novel GB method of
+solution presented here.
+The third case considered here is the computation of the far
+field pattern of the same parabolic reflector as the one utilized in
+the computations of Figs. 6–9, except that it is now fed by a
+element planar square antenna array whose center is at the focus
+and whose boresight points toward the center of the reflector
+at an angle as in the case of Figs. 7–9. Each radiating array
+element consists of Huygens source identical to that employed
+for the calculations in Figs. 6–9. The interelement array spacing
+===== PAGE 13 =====
+892 IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION, VOL. 49, NO. 6, JUNE 2001
+TABLE I
+VALUES FOR THE COEFFICIENTS /67 AND /68 OF THE SURFACE MODIFIED
+JACOBI POLYNOMIAL-BASED EXPANSION FOR A SHAPED REFLECTOR THAT
+PRODUCES A CONUS CONTOURED BEAM SHOWN IN FIGS.1 4 AND 15
+is half a free space wavelength in this case. The total number of
+GBs employed here is 89. Also, in this case, and the
+89 GBs are launched from the single lattice point at the focus.
+The far field pattern is computed at 11.803 GHz in the
+and planes, respectively, for this array fed parabolic
+reflector case; this pattern is shown in Fig. 11 along with the
+reference numerical PO solution.
+The fourth case considered is the near field pattern at 11.803
+GHz of an offset ellipsoidal reflector fed by a Huygens source
+which is located on the
+axis (or the axis of symmetry of the
+parent ellipsoid) at a distance from the coordinate
+origin in Fig. 3. The value of , and the offset distance of
+Fig. 3 are indicated below in Fig. 12 for this case. The near
+field result shown in Fig. 12 is evaluated at
+in the
+– (or ) plane and compared with the numerical PO
+reference solution. It is noted that the feed tilt angle is chosen
+so that the feed axis (or boresight) strikes the center of the offset
+ellipsoidal reflector surface. A total of approximately 50 GBs
+are used. Fig. 13 shows the far field pattern in the
+plane
+for the same reflector as in Fig. 12 and at the same frequency,
+namely 11.803 GHz.
+The final case considered here is the calculation of the
+far-zone contoured beam produced by a shaped concave re-
+flector designed for CONUS coverage. The reflector shape was
+obtained from elsewhere [24] and was given as an expansion
+in terms of a product of the modified Jacobi polynomials
+and trigonometric functions. Such a surface representation is
+being commonly used for describing shaped reflectors and it
+is specifically given in [25]. The coefficients
+and
+of this surface modified Jacobi polynomial based expansion,
+as in [25], where the indices and here are distinct from and
+not to be confused with the GB expansion of Section II, are
+summarized below in Table I. A type feed pattern is
+assumed where . This shaped reflector was designed
+in [24] to produce three gain zones over the CONUS coverage
+region for compensating rain attenuation exactly as shown in
+[25, Fig. 4]. Referring to Fig. 3, it is noted that this general
+concave shaped reflector has
+, , feed
+at a distance of from the origin. The feed tilt
+angle for this case. Normalized constant far zone
+gain contours are shown in Fig. 14 for this CONUS coverage.
+The GB-based calculation of the contoured beam over an
+angular (elevation
+azimuth) grid of points to cover
+the CONUS region is shown in Fig. 14. The corresponding
+numerical PO-based reference solution for this case is shown
+in Fig. 15 for comparison. Both Figs. 14 and 15 show nor-
+malized gain contours for co-polarized pattern contributions;
+the cross-polarized contributions are also found to agree just
+as well as the co-polarized ones, but are not shown here for
+space limitations [see Fig. 8(c) for the cross-polar radiation
+for a different case]. The GB method used approximately 200
+GBs and took less than 5 minutes of CPU time, whereas the
+numerical PO method used to provide reference results for
+comparison took about 6 h for the same calculations.
+It is clear that the present GB method for analyzing reflector
+antennas is accurate, very fast, physically appealing, and versa-
+tile. From the result of Fig. 14, it is obvious that the GB method
+should be extremely fast for also synthesizing shaped reflec-
+tors in contoured beam applications. The application of this GB
+method to shaped reflector synthesis is currently under study. In
+addition, the extension of this GB method for an efficient anal-
+ysis/synthesis of dual reflectors is also currently under study.
+R
+EFERENCES
+[1] H.-T. Chou and P.H. Pathak, “Uniform asymptotic solution for the EM
+reflection and diffraction of an arbitrary Gaussian beam by a smooth
+surface with an edge,” J. Radio Sci. , vol. 32, no. 4, pp. 1319–1336,
+July–Aug. 1997.
+[2] P. Y . Ufimstev, “Method of edge waves in the physical theory of diffrac-
+tion,” Translation prepared by the U.S. Air Force Foreign Technology
+Division, Wright-Patterson AFB, OH, released for public distribution
+Sept. 7, 1971.
+[3] D. I. Butorin, N. A. Martynov, and P. Ya. Ufimstev, “Asymptotic Expres-
+sions for the Elementary Edge Waves,,”Soviet J. Comm. Tech. Electron.,
+vol. 33, no. 9, pp. 17–26, 1988.
+[4] P. H. Pathak, “High frequency techniques for antenna analysis,” Proc.
+IEEE, vol. 80, pp. 44–65, Jan. 1992.
+[5] K. M. Mitzner, “Incremental length diffraction coefficients,” Aircraft
+Div., Northrop Corp., Tech. Rep. AFAL-TR-73-296, April 1974.
+[6] A. Michaeli, “Elimination of infinities in equivalent edge currents—Part
+I,” IEEE Trans. Antennas Propagat. , vol. AP-34, pp. 912–918, July
+1986.
+[7] E. F. Knott, “The relationship between Mitzners ILDC and Michaelis
+equivalent currents,” IEEE Trans. Antennas Propagat., vol. AP-33, pp.
+112–114, Jan. 1985.
+[8] E. F. Knott and T. B. A. Senior, “Comparison of three high-frequency
+diffraction techniques,”Proc. IEEE, vol. 62, pp. 1468–1478, Nov. 1974.
+===== PAGE 14 =====
+CHOU et al.: NOVEL GAUSSIAN BEAM METHOD FOR THE RAPID ANALYSIS OF LARGE REFLECTOR ANTENNAS 893
+[9] R. A. Shore and A. D. Yaghijian, “Incremental diffraction coefficients
+for planar surfaces,” IEEE Trans. Antennas Propagat. , vol. 36, pp.
+55–70, Jan. 1988.
+[10] P. H. Pathak, “Techniques for high frequency problems,” in Antenna
+Handbook, Theory Application and Design , Y . T. Lo and S. W. Lee,
+Eds. New York: Van Nostrand Reinhold, 1988.
+[11] R. G. Kouyoumjian and P. H. Pathak, “A uniform geometrical theory of
+diffraction for an edge in a perfectly conducting surface,” Proc. IEEE,
+vol. 62, pp. 1448–1461, Nov. 1974.
+[12] S. W. Lee and G. A. Deschamps, “A uniform asymptotic theory of EM
+diffraction by a curved wedge,” IEEE Trans. Antennas Propagat., vol.
+AP-24, pp. 25–34, Jan. 1976.
+[13] D. A. McNamara, C. W. I. Pistorius, and J. A. G. Malherbe, Introduc-
+tion to the Uniform Geometrical Theory of Diffraction. Norwood, MA:
+Artech House, 1990.
+[14] P. D. Einziger, S. Raz, and M. Shapira, “Gabor representation and aper-
+ture theory,” J. Opt. Soc. Amer., vol. 3, pp. 508–522, Apr. 1986.
+[15] J. Maciel and L. B. Felsen, “Systematic study of fields due to extended
+aperture by Gaussian beam discretization,”IEEE Trans. Antennas Prop-
+agat., vol. 37, pp. 884–892, July 1989.
+[16] , “Gaussian beam analysis of propagation from an extended plane
+aperture distribution through plane and curved dielectric layers, Parts I
+and II,” IEEE Trans. Antennas Propagat., vol. 38, pp. 1607–1624, Oct.
+1990.
+[17] F. J. V . Hasselmann and L. B. Felsen, “Asymptotic analysis of parabolic
+reflector antennas,” IEEE Trans. Antennas Propagat. , vol. AP-30, pp.
+677–685, 1982.
+[18] R. J. Burkholder and P. H. Pathak, “Analysis of EM penetration into and
+scattering by electrically large open waveguide cavities using Gaussian
+beam shooting,” Proc. IEEE, vol. 79, pp. 1401–1412, Oct. 1991.
+[19] E. Heyman and R. Ianconescu, “Pulsed beam diffraction by a perfectly
+conducting wedge: Local scattering models,” IEEE Trans. Antennas
+Propagat., vol. 34, pp. 519–528, 1995.
+[20] G. A. Suedan and E. V . Jull, “Two-dimensional beam diffraction by a
+half-plane and wide slit,” IEEE Trans. Antennas Propagat., vol. 35, pp.
+1077–1083, 1987.
+[21]
+, “Beam diffraction by planar and parabolic reflector,”IEEE Trans.
+Antennas Propagat., vol. 39, pp. 521–527, 1991.
+[22] H. T. Anastassiu and P . H. Pathak, “High-frequency analysis of Gaussian
+beam scattering by a two-dimensional parabolic contour of finite width,”
+Radio Science, vol. 30, no. 3, pp. 493–503, May–June 1995.
+[23] H.-T. Chou, P. H. Pathak, and R. J. Burkholder, “Feed array synthesis for
+reflector antennas in contoured beam applications via an efficient and
+novel Gaussian beam technique,” Radio Science, submitted for publica-
+tion.
+[24] W. Theunissen, private communication, July 1998.
+[25] D.-W. Duan and Y . Rahmat-Samii, “A generalized diffraction synthesis
+technique for high performance reflector antennas,” IEEE Trans. An-
+tennas Propagat., vol. AP-43, Jan, 1995.
+[26] P. Y . Ufimstev, “Method Drayevykh V oin V Fizicheskoy Theorii
+Difraktsi,” Izd-Vo Sov. Radio, pp. 1–243, 1962. Russian version of [2].
+[27] A. Michaeli, “Elimination of infinities in equivalent edge currents—Part
+II,” IEEE Trans. Antennas Propagat., vol. AP-34, pp. 1034–1037, Aug.
+1986.
+Hsi-Tseng Chou was born in ChangHua, Taiwan, in 1966. He received the B.S.
+degree from National Taiwan University in 1988 and the M.S. and Ph. D. degrees
+from The Ohio State University, Columbus, in 1993 and 1996, respectively, all
+in electrical engineering.
+He joined the Department of Electrical Engineering, Yuan Ze University,
+Taiwan, in August 1998 and is currently an Assistant Professor there. He worked
+with China Ryoden Co., Ltd. in 1990 for one year and then joined the Electro-
+Science Laboratory at The Ohio State University as a Graduate Research As-
+sociate from 1991 to 1996. After receiving his Ph.D. degree in 1996, he con-
+tinued his work at the ElectroScience Laboratory as a Post-Doctoral Researcher
+till 1998. His current research interests include antenna design, electromagnetic
+scattering, development of asymptotic high-frequency solutions in the format
+of the uniform geometrical theory of diffraction (UTD), novel Gaussian beam
+techniques for the application of reflector antenna analysis/synthesis, and hy-
+brid MoM-UTD type solutions for periodic structures.
+Dr. Chou received a Young Scientist Award from the International Union of
+Radio Science(URSI) and a best paper award from the ElectroScience Labora-
+tory both in 1999, and has been invited to present papers at many international
+technical conferences. Dr. Chou is a member of the IEEE Antennas and Propa-
+gation Society and an elected member of US Commission B of URSI.
+Prabhakar H. Pathak (M’76–SM’81–F’86) received the B.Sc. (hons.) degree
+in physics from St. Xaviers College, Univ. of Mumbai, India, in 1962, the B.S.
+degree in electrical engineering from the Louisiana State University, Baton
+Rouge, and the M.S. and Ph.D. degrees in electrical engineering from The
+Ohio State University, Columbus, in 1970 and 1973, respectively.
+He was an Instructor in the Dept. of Electrical Engineering at the Univ. of Mis-
+sissippi during the academic year 1965–66, before coming to The Ohio State
+University. Since 1973 he has been at Ohio State University ElectroScience
+Lab., Dept. of Electrical Eng., where he is currently a Professor. Dr. Pathak has
+contributed to the development of the uniform geometrical theory of diffrac-
+tion (UTD) and some of its extensions, all of which are being widely used in the
+analysis of antenna and scattering problems associated with complex structures,
+such as aircraft, spacecraft and ships. Some of this research has also been in-
+volved with an analysis of the problems of diffraction by discontinuities in the
+geometrical as well as in the electrical properties of a surface; the latter cate-
+gory includes surface wave structures. In addition, he has been involved with
+the development of efficient hybrid methods for analysis of microstrip type
+antennas, and more recently for dealing with complex radiating structures in-
+cluding open-ended cavities. Currently, his work continues to be in the areas
+of asymptotic high-frequency methods and the analytical inversion of the so-
+lutions obtained therefrom into the time domain to arrive at a time dependent
+progressing wave picture for transient radiation and scattering, and also in the
+development of novel and fast methods of analysis/synthesis of electromagnetic
+radiation by electrically large general reflector antenna systems and large-sized
+finite arrays. His research interests are broadly in the areas of electromagnetic
+theory, mathematical methods, antennas, and scattering. He has participated in
+several invited lectures and short courses on the uniform geometrical theory of
+diffraction and other high-frequency methods, both in the U.S. and abroad. He
+has authored and co-authored chapters on the subject of high-frequency diffrac-
+tion for five books.
+Dr. Pathak is a member of Sigma Xi and a member of the U.S. Commission B
+of URSI. He was named an IEEE Antennas and Propgation Society (AP-S) dis-
+tinguished lecturer for a three-year term beginning in 1991. Currently he serves
+as the chair of the IEEE AP-S Distinguished Lecturer Program. He received the
+1996 Schelkunoff Best Paper Award from IEEE AP-S, and also the George Sin-
+clair Award in 1996. He is the recipient of the IEEE Third Millennium Medal
+which was awarded in July 2000 by the AP-S.
+Robert J. Burkholder(S’85–M’89–SM’97) received the B.S., M.S., and Ph.D.
+degrees in electrical engineering from The Ohio State University, Columbus, in
+1984, 1985, and 1989, respectively.
+From 1989 to the present, he has been with The Ohio State University Electro-
+Science Laboratory, Department of Electrical Engineering, where he currently
+has the titles of Research Scientist and Adjunct Associate Professor. His re-
+search specialties are high-frequency asymptotic techniques and their hybrid
+combination with numerical techniques for solving large-scale electromagnetic
+radiation and scattering problems. He has contributed extensively to the EM
+analysis of large cavities, such as jet inlets/exhausts, and is currently working
+on the more general problem of EM radiation, propagation, and scattering in
+realistically complex environments.
+Dr. Burkholder is a full member of URSI Commission B, and a member of
+the Applied Computational Electromagnetics Society (ACES).

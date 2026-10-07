@@ -44,7 +44,7 @@ def load_cut_file(file_path='single_cut.cut'):
             gain_dbi = 10 * np.log10(data / avg_power)
 
             if file_path=="gbma.cut":
-                gain_dbi = 10 * np.log10(data / avg_power)#-30
+                gain_dbi = 10 * np.log10(data / avg_power)
 
 
             cuts.append({
@@ -58,7 +58,7 @@ def load_cut_file(file_path='single_cut.cut'):
 
     return cuts
 
-def plot_cut_files(file_list, labels=None, title="方向图对比", linestyles=None,xlabel="θ (度)", ylabel="方向性 (dBi)",
+def plot_cut_files(file_list, labels=None, title="方向图对比", linestyles=None,xlabel="θ (度)", ylabel="方向性系数 (dBi)",
                    xlim=None, ylim=None, save_path=None, show=True):
     """
     读取一个或多个 .cut 文件并绘制方向图曲线。
@@ -124,14 +124,18 @@ if __name__ == "__main__":
     plt.rcParams['xtick.labelsize'] = font_size - 2       # x轴刻度
     plt.rcParams['ytick.labelsize'] = font_size - 2       # y轴刻度
     plt.rcParams['legend.fontsize'] = font_size - 2       # 图例
-    # 示例：绘制 PO.cut、gbma.cut 以及可能的 GRASP 仿真数据 single_cut.cut
+    # 示例：绘制 PO.txt、gbma.txt 以及可能的 GRASP 仿真数据 single_cut1.cut
     plot_cut_files(
-        file_list=[ 'gbma.cut','PO.cut', 'single_cut1.cut'],
-        labels=[ 'GBMA','PO', 'GRASP'],
+        file_list=[ 'gbma.cut','PO.cut' , '90.cut'],
+        # file_list=[ 'gbma.cut' , 'PO.cut'],
+
+        # labels=[ 'GBMA', 'PO'],
+        labels=[ 'GBMA', 'PO', 'GRASP（PO）'],
+
         linestyles=['-', '--', ':'],   # 分别对应实线、虚线、点线
         title='抛物面天线方向图对比 (φ=0°)',
-        xlim=(-10, 10),
-        ylim=(-40, 50),
+        xlim=(-90, 90),
+        ylim=(-100, 50),
         save_path='pattern_comparison.png',
         show=True
     )
